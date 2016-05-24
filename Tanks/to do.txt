@@ -6,8 +6,6 @@ tide up the code
 
 
 
-polish shooting
-
 tank  cannot go outside the map
 
 

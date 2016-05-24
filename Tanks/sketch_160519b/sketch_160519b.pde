@@ -28,7 +28,7 @@ boolean moveRightT=false;
 void setup() {
   size(800, 500);
   c = new Client(this, "127.0.0.1", 2620); // Replace with your server’s IP and port
-  frameRate(20);
+  frameRate(15);
 }
 
 void draw() {
@@ -42,6 +42,7 @@ void draw() {
 
   enemyTank();
 }
+
 
 
 void sendData() {
@@ -63,15 +64,18 @@ void enemyTank() {
     data = int(split(input, ' ')); 
     // data 0 - tank x pos, 1 - tank y pos, 2 - tank body angle, 3 - tank turrent angle, 4 - posx of bullet, 5 - posy of bullet,
     translate(data[0], data[1]);
-
-    fill(0, 200, 0);
+    // body
+    fill(0, 150, 0);
     rotate(radians(data[2]));
-    rect(0, 0, 20, 30);//tank
+    rect(0, 0, 22, 35);//tank
     rotate(radians(-data[2]));
-
+    // tower
+    fill(0, 100, 0);
+    ellipse(0, 0, 17, 17);  
+    // barrel
     fill(0, 100, 0);
     rotate(radians(data[3]+data[2]));
-    rect(0, -16, 3, 20);//barrel
+    rect(0, -20, 3, 25);//barrel
     rotate(radians(-data[3]-data[2]));
 
     translate(-data[0], -data[1]);
@@ -79,8 +83,15 @@ void enemyTank() {
     // drawing the bullet
     fill(255, 255, 0);
     ellipseMode(CENTER);
-    ellipse(data[4], data[5], 5, 5);
-    
+    ellipse(data[4], data[5], 3, 3);
+
+    // hit detection
+    if (dist(data[4], data[5], mapPosX, mapPosY)<22) {
+      mapPosX=100;
+      mapPosY=100;
+      angle=0;
+      angle2=0;
+    }
   }
 }
 
@@ -89,15 +100,18 @@ void myTank() {
   translate(mapPosX, mapPosY);
 
   rectMode(CENTER);
-
-  fill(0, 200, 0);
+  // body
+  fill(0, 150, 0);
   rotate(radians(angle));
-  rect(0, 0, 20, 30);//tank
+  rect(0, 0, 22, 35);//tank
   rotate(radians(-angle));
-
+  // tower
+  fill(0, 100, 0);
+  ellipse(0, 0, 17, 17);
+  // barrel
   fill(0, 100, 0);
   rotate(radians(angle2+angle));
-  rect(0, -16, 3, 20);//barrel
+  rect(0, -20, 3, 25);//barrel
   rotate(radians(-angle2-angle));
 
   xMove=sin(radians(angle))*3;
@@ -131,7 +145,6 @@ void myTank() {
     angle2++;
     angle2++;
   }
-
 }
 
 ///////////////////////////////// moving the tank
@@ -171,6 +184,6 @@ void keyReleased(KeyEvent e) {
   } else if (key=='d' || key=='D') {
     moveRightT=false;
   } else if (key=='S'||key=='s') {
-    bullet=new Bullet(0, -30);
+    bullet=new Bullet(0, -38);
   }
 }

@@ -6,7 +6,7 @@ class Bullet {
   float tempAng;
   float tempMapX;
   float tempMapY;
-  
+  float barrelDistance;
   float directX;
   float directY;
   
@@ -14,13 +14,14 @@ class Bullet {
   Bullet(float tempx, float tempy) {
     posX=tempx;
     posY=tempy;
-    speed=10;
+    speed=20;
     tempAng=angle2+angle;
     moveY=speed;
     tempMapX=mapPosX;
     tempMapY=mapPosY;
-    directX=mapPosX+sin(radians(tempAng))*30;
-    directY=mapPosY-cos(radians(tempAng))*30;
+    barrelDistance=38;
+    directX=mapPosX+sin(radians(tempAng))*barrelDistance;
+    directY=mapPosY-cos(radians(tempAng))*barrelDistance;
   }
 
   void drawBullet() {
@@ -29,7 +30,7 @@ class Bullet {
     
     fill(255, 255, 0);
     ellipseMode(CENTER);
-    ellipse(posX, posY, 5, 5);
+    ellipse(posX, posY, 3, 3);
     posY-=moveY; 
     
     rotate(radians(-tempAng));
