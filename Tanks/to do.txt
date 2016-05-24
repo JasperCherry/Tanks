@@ -6,12 +6,25 @@ tide up the code
 
 
 
-x and y coordinates in a one map dimension for hit detection
+polish shooting
 
 tank  cannot go outside the map
 
-obstacles
+
+
+
 
 graphics
 
 sound
+
+
+
+ideas for gameplay:
+
+
+obstacles that can be destroyed
+
+20mm cannon
+heavy cannon (not turnable)
+normal cannon

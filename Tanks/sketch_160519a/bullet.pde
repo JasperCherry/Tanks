@@ -14,13 +14,13 @@ class Bullet {
   Bullet(float tempx, float tempy) {
     posX=tempx;
     posY=tempy;
-    speed=1;
+    speed=10;
     tempAng=angle2+angle;
     moveY=speed;
     tempMapX=mapPosX;
     tempMapY=mapPosY;
-    directX=mapPosX;
-    directY=mapPosY;
+    directX=mapPosX+sin(radians(tempAng))*30;
+    directY=mapPosY-cos(radians(tempAng))*30;
   }
 
   void drawBullet() {
@@ -35,7 +35,7 @@ class Bullet {
     rotate(radians(-tempAng));
     translate(-tempMapX, -tempMapY);
     
-    directX+=sin(radians(tempAng))*speed;;
+    directX+=sin(radians(tempAng))*speed;
     directY-=cos(radians(tempAng))*speed;
   }
 }
