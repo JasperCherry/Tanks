@@ -87,8 +87,8 @@ void enemyTank() {
 
     // hit detection
     if (dist(data[4], data[5], mapPosX, mapPosY)<22) {
-      mapPosX=100;
-      mapPosY=100;
+      mapPosX=700;
+      mapPosY=400;
       angle=0;
       angle2=0;
     }

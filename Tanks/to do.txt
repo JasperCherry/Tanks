@@ -10,8 +10,6 @@ tank  cannot go outside the map
 
 
 
-
-
 graphics
 
 sound
