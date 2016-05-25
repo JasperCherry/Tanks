@@ -35,7 +35,7 @@ boolean moveRightT=false;
 
 void setup() {
   size(1000, 600);
-  c = new Client(this, "127.0.0.1", 2620); // Replace with your server’s IP and port
+  c = new Client(this, "127.0.0.1", 2222); // Replace with your server’s IP and port
   frameRate(15);
 }
 
@@ -73,6 +73,7 @@ void enemyTank() {
     // data 0 - tank x pos, 1 - tank y pos, 2 - tank body angle, 3 - tank turrent angle, 4 - posx of bullet, 5 - posy of bullet
 
     translate(data[0], data[1]);
+    rectMode(CENTER);
     // body
     fill(0, 150, 0);
     rotate(radians(data[2]));
@@ -140,8 +141,8 @@ void myTank() {
   rect(0, -20, 3, 25);//barrel
   rotate(radians(-angle2-angle));
 
-  xMove=sin(radians(angle))*3;
-  yMove=cos(radians(angle))*3;
+  xMove=sin(radians(angle))*speed;
+  yMove=cos(radians(angle))*speed;
 
   translate(-mapPosX, -mapPosY);
 
