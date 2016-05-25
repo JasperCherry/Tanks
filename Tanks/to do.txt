@@ -14,7 +14,7 @@ graphics
 
 sound
 
-
+trees / smoke that can cover up the tank
 
 ideas for gameplay:
 

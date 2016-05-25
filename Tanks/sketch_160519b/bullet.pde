@@ -14,7 +14,7 @@ class Bullet {
   Bullet(float tempx, float tempy) {
     posX=tempx;
     posY=tempy;
-    speed=20;
+    speed=50;
     tempAng=angle2+angle;
     moveY=speed;
     tempMapX=mapPosX;
